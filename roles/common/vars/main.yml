@@ -1,0 +1,6 @@
+# install packages
+item_packages:
+  - gcc-c++
+  - glibc-headers
+  - git
+  - openssl-devel

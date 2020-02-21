@@ -1,0 +1,15 @@
+- name: set locale to /etc/cloud/cloud.cfg
+  lineinfile: 'dest=/etc/cloud/cloud.cfg line="locale: {{locale}}"'
+- name: set locale
+  command: localectl set-locale LANG=ja_JP.UTF-8
+- name: set localtime
+  command: timedatectl set-timezone Asia/Tokyo
+- name: set set-keymap
+  command: localectl set-keymap jp106
+- name: yum update
+  yum: state=latest name=*
+- name: install request packeges
+  yum: name={{ item }} state=installed
+  with_items:
+  - "{{ item_packages }}"
+
